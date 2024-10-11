@@ -1,19 +1,24 @@
-import Category from "@/models/Category";
+import Category from '@/models/Category';
+import dbConnect from '@/lib/db';
 
 export async function GET() {
-  const categories = await Category.find().sort({ order: -1 })
-  return Response.json(categories)
+  await dbConnect();
+  try {
+    const categories = await Category.find();
+    return new Response(JSON.stringify(categories), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+  }
 }
 
 export async function POST(request) {
-  const body = await request.json()
-  const category = new Category(body)
-  await category.save()
-  return Response.json(category)
-}
-
-export async function PUT(request) {
-  const body = await request.json()
-  const category = await Category.findByIdAndUpdate(body._id, body) 
-  return Response.json(category)
+  await dbConnect();
+  try {
+    const body = await request.json();
+    const category = new Category(body);
+    await category.save();
+    return new Response(JSON.stringify(category), { status: 201 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+  }
 }

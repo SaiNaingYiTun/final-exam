@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 
 export default function Home() {
-  const APIBASE = process.env.NEXT_PUBLIC_API_URL;
+  const APIBASE = process.env.NEXT_PUBLIC_API_BASE;
   const [categoryList, setCategoryList] = useState([]);
   const [editMode, setEditMode] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Home() {
 
   function handleCategoryFormSubmit(data) {
     if (editMode) {
-      // data.id = data._id
+       data.id = data._id
       fetch(`${APIBASE}/category`, {
         method: "PUT",
         headers: {
