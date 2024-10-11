@@ -1,5 +1,5 @@
 import Product from '@/models/Product';
-import dbConnect from '@/lib/dbConnect';
+import dbConnect from '@/lib/db';
 
 export async function GET() {
   await dbConnect();

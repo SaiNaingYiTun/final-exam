@@ -16,4 +16,4 @@ export default function CustomerList({ customers, onDelete }) {
       ))}
     </ul>
   );
-} 
+}

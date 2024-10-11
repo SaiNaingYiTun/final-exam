@@ -1,4 +1,3 @@
-'use client';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CustomerForm from '@/components/CustomerForm';
@@ -34,4 +33,4 @@ export default function CustomerDetailPage({ params }) {
       <CustomerForm customer={customer} onSubmit={handleSubmit} />
     </div>
   );
-} 
+}

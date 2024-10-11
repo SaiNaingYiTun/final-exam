@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import CustomerForm from '@/components/CustomerForm';
@@ -21,4 +20,4 @@ export default function AddCustomerPage() {
       <CustomerForm onSubmit={handleSubmit} />
     </div>
   );
-} 
+}
